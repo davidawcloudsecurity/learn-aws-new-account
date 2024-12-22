@@ -1,0 +1,47 @@
+# Set Up an Alarm for AWS Free Tier Usage (750 Hours)
+
+## Step 1: Enable Billing and Free Tier Usage Alerts
+1. **Enable Billing Alerts**:
+   - Go to the **Billing Dashboard** in the AWS Management Console.
+   - Navigate to **Billing Preferences**.
+   - Enable **Receive Billing Alerts** and save your preferences.
+
+2. **Monitor Free Tier Usage**:
+   - In the **Billing Dashboard**, go to the **Free Tier Usage Alerts** section.
+   - Configure email notifications for free tier usage.
+
+---
+
+## Step 2: Create a Budget for Free Tier Hours
+1. Go to the **Budgets** page in the **Billing Dashboard**.
+2. Click **Create a budget**.
+3. Select **Usage Budget**.
+4. Set the following:
+   - **Budget Name**: `FreeTierEC2Usage`
+   - **Service**: `Amazon EC2`
+   - **Usage Type**: `BoxUsage:t2.micro`
+   - **Usage Limit**: `750 Hours`
+5. Set up **Thresholds**:
+   - Example: Alert at 50%, 75%, and 90% of 750 hours (375, 563, and 675 hours).
+6. Configure **Notifications**:
+   - Add email addresses where you want to receive alerts.
+
+---
+
+## Step 3: View Usage in CloudWatch (Optional)
+1. Go to **CloudWatch** in the AWS Console.
+2. Check **Billing Metrics**:
+   - Metrics like `FreeTierUsage` may be available depending on your AWS region.
+3. Create a CloudWatch Alarm:
+   - Use the metric `EstimatedCharges` or similar to monitor your spending.
+
+---
+
+## Step 4: Automate Actions (Optional)
+- To prevent overage, you can automate EC2 instance shutdown using AWS Lambda:
+   - **Create a Lambda Function**: Stop EC2 instances when the 750-hour limit is approached.
+   - **Use EventBridge**: Trigger the Lambda function based on the budget alerts.
+
+---
+
+This setup will notify you when you are near the free tier limit, helping you avoid unexpected charges.
