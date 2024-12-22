@@ -7,8 +7,8 @@ When opening a new AWS account, it's essential to follow best practices to ensur
 
 ## 1. Secure the Root Account
 - [ ] **Enable Multi-Factor Authentication (MFA)**: Immediately enable MFA on the root account for an extra layer of security.
-- [ ] - **Limit Root Account Use**: Avoid using the root account for daily operations. Instead, create IAM users with appropriate permissions.
-- [ ] - **Secure Root Access**: Store root account credentials in a secure password manager and avoid exposing them.
+- [ ] **Limit Root Account Use**: Avoid using the root account for daily operations. Instead, create IAM users with appropriate permissions.
+- [ ] **Secure Root Access**: Store root account credentials in a secure password manager and avoid exposing them.
   
 ## 2. Create IAM Users and Groups
 - [ ] **Use IAM for Identity Management**: Create individual IAM users for team members and assign them only the permissions they need.
