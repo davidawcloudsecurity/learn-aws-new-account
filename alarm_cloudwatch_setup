@@ -1,0 +1,62 @@
+```bash
+To set up an alarm in AWS CloudTrail for monitoring root account activity, you need to create a CloudWatch Alarm that triggers when an event related to root account actions is logged in CloudTrail. Here’s a step-by-step guide on how to do this:
+
+Step 1: Enable CloudTrail
+Ensure that CloudTrail is enabled for your AWS account. CloudTrail records all API calls made within your account, including those made by the root account.
+
+Go to the AWS Management Console.
+Open the CloudTrail service.
+Ensure a trail is created and is logging management events. If you haven’t already created a trail, click on Create trail, follow the wizard, and make sure "Management events" are being logged.
+You can enable Global events if you want to capture API activity across all regions.
+Step 2: Create a CloudWatch Log Group
+You need a CloudWatch Log Group to capture CloudTrail logs for the alarm.
+
+Go to the CloudWatch console.
+In the left-hand navigation, select Logs.
+Click on Create log group, then enter a name for your log group (e.g., /aws/cloudtrail/RootAccountLogs).
+Step 3: Set up CloudTrail to Send Logs to CloudWatch
+CloudTrail can be configured to send logs to CloudWatch Logs, which is necessary for setting up alarms.
+
+Go back to the CloudTrail console.
+Select your trail and choose Edit.
+Scroll down to the CloudWatch Logs section and enable it.
+Set the Log group to the one you just created.
+Set the IAM Role to an appropriate role with permissions to publish to CloudWatch Logs (or create a new one).
+Save changes.
+Step 4: Create a Metric Filter in CloudWatch Logs
+Now, you'll create a metric filter to capture root account activity from the CloudTrail logs.
+
+Go to the CloudWatch console and select Logs from the left sidebar.
+
+Select the Log Group you created.
+
+Choose Create Metric Filter.
+
+In the Filter Pattern box, enter the following pattern to capture root account activity:
+
+json
+Copy code
+{ $.userIdentity.type = "Root" }
+Click Next.
+
+Step 5: Create a CloudWatch Metric
+In the Create Metric Filter wizard, give your metric a name (e.g., RootAccountActivity).
+Select the Namespace for the metric (you can use a custom namespace like RootAccount).
+Choose Create Filter.
+Step 6: Set up the CloudWatch Alarm
+Now, create an alarm based on the metric you just created to trigger when there is root account activity.
+
+Go to the CloudWatch console.
+In the left-hand menu, select Alarms.
+Click on Create alarm.
+Select the RootAccountActivity metric from the Namespace you set earlier.
+Set the threshold conditions for your alarm. For example, set the condition to trigger when the metric is greater than or equal to 1, indicating that the root account has performed an action.
+Configure the alarm actions (e.g., send an email notification) by selecting an SNS topic. If you don't have an SNS topic, create one first in the SNS service.
+Step 7: Review and Create the Alarm
+Review all the details.
+Click on Create alarm.
+Summary
+You now have a CloudWatch Alarm set up to monitor for any activity from the root account, using CloudTrail logs. The alarm will trigger based on the custom metric you defined when CloudTrail logs an action performed by the root account.
+
+This approach ensures that you are alerted whenever the root account is used, which can help improve the security of your AWS environment.
+```
