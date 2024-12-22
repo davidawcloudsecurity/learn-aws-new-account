@@ -6,13 +6,14 @@ Things to do first after open a new aws account
 When opening a new AWS account, it's essential to follow best practices to ensure security, cost management, and operational efficiency. Below is a comprehensive list of best practices to implement from the start.
 
 ## 1. Secure the Root Account
-- **Enable Multi-Factor Authentication (MFA)**: Immediately enable MFA on the root account for an extra layer of security.
-- **Limit Root Account Use**: Avoid using the root account for daily operations. Instead, create IAM users with appropriate permissions.
-- **Secure Root Access**: Store root account credentials in a secure password manager and avoid exposing them.
+- [ ] **Enable Multi-Factor Authentication (MFA)**: Immediately enable MFA on the root account for an extra layer of security.
+- [ ] - **Limit Root Account Use**: Avoid using the root account for daily operations. Instead, create IAM users with appropriate permissions.
+- [ ] - **Secure Root Access**: Store root account credentials in a secure password manager and avoid exposing them.
   
 ## 2. Create IAM Users and Groups
-- **Use IAM for Identity Management**: Create individual IAM users for team members and assign them only the permissions they need.
-- **Use IAM Groups**: Organize users into groups based on roles (e.g., Admins, Developers, Read-Only) and assign permissions to groups rather than individuals.
+- [ ] **Use IAM for Identity Management**: Create individual IAM users for team members and assign them only the permissions they need.
+- [ ] **Use IAM Groups**: Organize users into groups based on roles (e.g., Admins, Developers, Read-Only) and assign permissions to groups rather than individuals.
+- [ ] **Setup Alias for Access Management**: Create alias
 - **Use IAM Roles for EC2 and Cross-Account Access**: Delegate permissions to EC2 instances and allow cross-account access with **IAM roles**.
 
 ## 3. Set Up Billing and Cost Management
